@@ -319,9 +319,12 @@ export default class FreeDraw extends FeatureGroup {
             const lineData = [ lastPoint, toPoint ];
             lastPoint = toPoint;
             // Draw SVG line based on the last movement of the mouse's position.
-            svg.append('path').classed('leaflet-line', true)
-                .attr('d', lineFunction(lineData)).attr('fill', 'none')
-                .attr('stroke', 'black').attr('stroke-width', strokeWidth);
+            svg.append('path')
+                .classed(this.options.lineclass || 'leaflet-line', true)
+                .attr('d', lineFunction(lineData))
+                .attr('fill', this.options.fill || 'none')
+                .attr('stroke', this.options.stroke || 'black')
+                .attr('stroke-width', strokeWidth);
         };
     }
 
